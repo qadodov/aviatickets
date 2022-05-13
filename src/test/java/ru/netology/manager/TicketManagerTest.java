@@ -57,6 +57,7 @@ class TicketManagerTest {
         Ticket[] expected = {t4, t2};
         Ticket[] actual = manager.findAll("DME", "EGO");
 
+        Arrays.sort(actual);
 
         assertArrayEquals(expected, actual);
     }
