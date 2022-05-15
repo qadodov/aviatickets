@@ -2,8 +2,11 @@ package ru.netology.manager;
 
 import ru.netology.ticket.Ticket;
 import ru.netology.repository.Repository;
+import ru.netology.ticket.TicketByPriceAscComparator;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Optional;
 
 public class TicketManager {
 
@@ -40,6 +43,7 @@ public class TicketManager {
                 finalResult = tmpSecond;
             }
         }
+        Arrays.sort(finalResult);
         return finalResult;
     }
 
@@ -66,6 +70,7 @@ public class TicketManager {
                 finalResult = tmpSecond;
             }
         }
+        Arrays.sort(finalResult, new TicketByPriceAscComparator());
         return finalResult;
     }
 

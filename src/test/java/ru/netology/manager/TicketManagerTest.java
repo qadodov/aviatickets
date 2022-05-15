@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class TicketManagerTest {
 
     Ticket t1 = new Ticket(1, 1500, "DME", "GZP", 150);
-    Ticket t2 = new Ticket(2, 5000, "DME", "EGO", 120);
+    Ticket t2 = new Ticket(2, 5000, "DME", "EGO", 220);
     Ticket t3 = new Ticket(3, 2000, "AAQ", "GZP", 200);
-    Ticket t4 = new Ticket(4, 1000, "DME", "EGO", 220);
+    Ticket t4 = new Ticket(4, 1000, "DME", "EGO", 120);
 
     Repository repo = new Repository();
     TicketManager manager = new TicketManager(repo);
@@ -28,7 +28,8 @@ class TicketManagerTest {
         manager.add(t3);
         manager.add(t4);
 
-        Ticket[] expected = {t2, t4};
+        Ticket[] expected = {t4, t2};
+
         Ticket[] actual = manager.findAll("DME", "EGO");
 
 
@@ -71,7 +72,7 @@ class TicketManagerTest {
         manager.add(t4);
 
 
-        Ticket[] expected = {t2, t4};
+        Ticket[] expected = {t4, t2};
         Ticket[] actual = manager.findAll("DME", "EGO", Ticket::compareTo);
 
 
