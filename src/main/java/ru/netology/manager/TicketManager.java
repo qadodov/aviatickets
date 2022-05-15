@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Optional;
 
+import java.util.Arrays;
+
 public class TicketManager {
 
     private Repository repository;
@@ -71,6 +73,7 @@ public class TicketManager {
             }
         }
         Arrays.sort(finalResult, new TicketByPriceAscComparator());
+      
         return finalResult;
     }
 

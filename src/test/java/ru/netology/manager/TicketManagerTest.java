@@ -78,4 +78,5 @@ class TicketManagerTest {
 
         assertArrayEquals(expected, actual);
     }
+
 }
