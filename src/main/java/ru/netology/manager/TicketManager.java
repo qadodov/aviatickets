@@ -2,6 +2,11 @@ package ru.netology.manager;
 
 import ru.netology.ticket.Ticket;
 import ru.netology.repository.Repository;
+import ru.netology.ticket.TicketByPriceAscComparator;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Optional;
 
 import java.util.Arrays;
 
@@ -41,6 +46,34 @@ public class TicketManager {
             }
         }
         Arrays.sort(finalResult);
+        return finalResult;
+    }
+
+    public Ticket[] findAll(String from, String to, Comparator<Ticket> comparator) {
+        Ticket[] result = new Ticket[0];
+        for (Ticket ticket : repository.findAll()) {
+            if (matchesFrom(ticket, from)) {
+                Ticket[] tmp = new Ticket[result.length + 1];
+                for (int i = 0; i < result.length; i++) {
+                    tmp[i] = result[i];
+                }
+                tmp[tmp.length - 1] = ticket;
+                result = tmp;
+            }
+        }
+        Ticket[] finalResult = new Ticket[0];
+        for (Ticket ticket : result) {
+            if (matchesTo(ticket, to)) {
+                Ticket[] tmpSecond = new Ticket[finalResult.length + 1];
+                for (int i = 0; i < finalResult.length; i++) {
+                    tmpSecond[i] = finalResult[i];
+                }
+                tmpSecond[tmpSecond.length - 1] = ticket;
+                finalResult = tmpSecond;
+            }
+        }
+        Arrays.sort(finalResult, new TicketByPriceAscComparator());
+      
         return finalResult;
     }
 
