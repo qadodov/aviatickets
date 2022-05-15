@@ -26,9 +26,7 @@ class TicketManagerTest {
         manager.add(t3);
         manager.add(t4);
 
-
-
-        Ticket[] expected = {t2, t4};
+        Ticket[] expected = {t4, t2};
         Ticket[] actual = manager.findAll("DME", "EGO");
 
         assertArrayEquals(expected, actual);
@@ -45,20 +43,4 @@ class TicketManagerTest {
         assertArrayEquals(expected, actual);
     }
 
-    @Test
-    void shouldSortSelectedTickets() {
-
-        manager.add(t2);
-        manager.add(t1);
-        manager.add(t3);
-        manager.add(t4);
-
-
-        Ticket[] expected = {t4, t2};
-        Ticket[] actual = manager.findAll("DME", "EGO");
-
-        Arrays.sort(actual);
-
-        assertArrayEquals(expected, actual);
-    }
 }
