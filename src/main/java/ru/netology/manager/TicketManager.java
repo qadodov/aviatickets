@@ -1,7 +1,7 @@
 package ru.netology.manager;
 
-import ru.netology.ticket.Ticket;
 import ru.netology.repository.Repository;
+import ru.netology.ticket.Ticket;
 
 import java.util.Arrays;
 
